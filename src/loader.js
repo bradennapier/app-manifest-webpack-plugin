@@ -18,11 +18,11 @@ const SCHEMA = {
 
 export default function handleFaviconsLoader(logo) {
   const callback = this.async();
-  console.log('Loader Runs! ');
+  // console.log('Loader Runs! ');
 
   const options = getOptions(this);
 
-  console.log('Options: ', options, this.options);
+  // console.log('Options: ', options, this.options);
 
   validateOptions(SCHEMA, options, 'AppManifestLoader');
 
@@ -99,8 +99,6 @@ async function runFavicons(loader, logo, options) {
       .replace(yandexRE, `href="${publicPath}yandex-browser-manifest.json"`)
       .replace(contentRE, `$1${publicPath}`)
       .replace(hrefRE, `$1${publicPath}`));
-
-  console.log(html);
 
   const response = {
     path,

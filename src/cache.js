@@ -9,13 +9,9 @@ import crypto from 'crypto';
  */
 export async function get(options, cacheFile, hash, getFavicons) {
   if (options.cache) {
-    const cacheFilePath = path.resolve(this._compiler.parentCompilation.compiler.outputPath, cacheFile);
-
-    console.log('Cache File Path: ', cacheFilePath);
-
-    fs.exists(cacheFilePath, exists => {
-      console.log('Cache Exists? ', exists);
-    });
+    // const cacheFilePath = path.resolve(this._compiler.parentCompilation.compiler.outputPath, cacheFile);
+    // TODO FINISH CACHING
+    // console.log('Cache File Path: ', cacheFilePath);
   }
 
   const result = await getFavicons();
@@ -30,10 +26,6 @@ export async function get(options, cacheFile, hash, getFavicons) {
         result,
       }),
     );
-
-    this.fs._stat(cacheFile, data => {
-      console.log('Stats: ', data);
-    });
   }
 
   return result;

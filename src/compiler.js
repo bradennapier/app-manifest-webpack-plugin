@@ -8,7 +8,7 @@ import vm from 'vm';
 const COMPILER_NAME = 'AppManifestPluginChild';
 
 async function handleOptimizeChunks(chunks) {
-  console.log('Handle Optimize Chunks: ', chunks.length);
+  // console.log('Handle Optimize Chunks: ', chunks.length);
   const [chunk = {}] = chunks;
   const [file] = chunk.files;
   let result;
@@ -22,8 +22,6 @@ async function handleOptimizeChunks(chunks) {
     throw e;
   }
   result = JSON.stringify(await Promise.resolve(result.default));
-
-  console.log('Result ', result);
 
   this.assets[file] = {
     map() {},
@@ -55,8 +53,6 @@ class ChildCompiler {
   }
 
   async compile() {
-    console.log('Compiling!');
-
     const { context } = this.parent.compiler;
     // Create an additional child compiler which takes the template
     // and turns it into an Node.JS html factory.
@@ -87,8 +83,6 @@ class ChildCompiler {
   handleCache() {
     this.compiler.hooks.compilation.tap('AppManifestPlugin', compilation => {
       if (compilation.cache) {
-        console.log('CACHE FOUND!');
-        console.log(compilation.cache[COMPILER_NAME]);
         if (!compilation.cache[COMPILER_NAME]) {
           compilation.cache[COMPILER_NAME] = {};
         }
@@ -102,7 +96,6 @@ class ChildCompiler {
   }
 
   handleRunCompiler() {
-    console.log('Run Child Compiler');
     return new Promise((resolve, reject) => {
       this.compiler.runAsChild((err, entries, childCompilation) => {
         if (err) return reject(err);
@@ -116,7 +109,6 @@ class ChildCompiler {
           hash: childCompilation.hash,
           chunk: entries[0],
         });
-        console.log('Output Name: ', outputName);
         return resolve({
           outputName,
           stats: JSON.parse(childCompilation.assets[outputName].source()),

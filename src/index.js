@@ -17,7 +17,7 @@ const getPluginConfiguration = config => ({
     lang: 'en-US', // Primary language for name and short_name
     background: '#fff', // Background colour for flattened icons. `string`
     theme_color: '#fff', // Theme color user for example in Android's task switcher. `string`
-    display: 'standalone', // Preferred display mode: "fullscreen", "standalone", "minimal-ui" or "browser". `string`
+    display: 'fullscreen', // Preferred display mode: "fullscreen", "standalone", "minimal-ui" or "browser". `string`
     orientation: 'any', // Default orientation: "any", "natural", "portrait" or "landscape". `string`
     start_url: '/?homescreen=1', // Start URL when launching the application from a device. `string`
     version: '1.0', // Your application's version string. `string`

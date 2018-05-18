@@ -1,0 +1,23 @@
+{
+  "presets": [
+    "@babel/preset-flow",
+    [
+      "@babel/preset-env",
+      {
+        "cacheDirectory": true,
+        "useBuiltIns": "usage",
+        "shippedProposals": true,
+        "targets": {
+          "node": "current"
+        }
+      }
+    ],
+    [
+      "@babel/preset-stage-0",
+      {
+        "decoratorsLegacy": true
+      }
+    ]
+  ],
+  "plugins": ["lodash", "@babel/plugin-proposal-object-rest-spread"]
+}
