@@ -15,6 +15,7 @@
     [
       "@babel/preset-stage-0",
       {
+        "useBuiltIns": true,
         "decoratorsLegacy": true
       }
     ]
